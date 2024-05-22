@@ -9,6 +9,8 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
+import { useToast } from "@/components/ui/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 // import { Terminal } from "lucide-react";
 
@@ -19,7 +21,7 @@ const App = () => {
     long: 15,
     autoStart: false,
   });
-
+  const { toast } = useToast();
   const [userSettings, setUserSettings] = useState({ ...defaultSettings });
 
   const [minutes, setminutes] = useState(defaultSettings.work);
@@ -80,6 +82,9 @@ const App = () => {
   };
 
   const handleSave = () => {
+    toast({
+      description: "Settings saved Successfully.",
+    });
     setminutes(userSettings.work);
     setDefaultSettings(userSettings);
   };
@@ -229,6 +234,7 @@ const App = () => {
             </PopoverContent>
           </Popover>
         </div>
+        <Toaster />
       </main>
 
       {/* {!isActive ? (
