@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from "@vercel/analytics/react";
 
 // import { Terminal } from "lucide-react";
 
@@ -235,6 +236,7 @@ const App = () => {
           </Popover>
         </div>
         <Toaster />
+        <Analytics />
       </main>
 
       {/* {!isActive ? (
