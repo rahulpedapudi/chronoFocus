@@ -36,12 +36,6 @@ const App = () => {
   const [session, setSession] = useState("Time to Focus!");
 
   useEffect(() => {
-    setDefaultSettings(userSettings);
-    setSeconds(0);
-    setPause(false);
-  }, [userSettings]);
-
-  useEffect(() => {
     let interval: any;
     if (isActive && !pause) {
       interval = setInterval(() => {
@@ -58,18 +52,18 @@ const App = () => {
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [minutes, seconds, isActive, pause, session]);
+  }, [minutes, seconds, isActive, pause]);
 
   const handleTimerEnd = () => {
     if (isWorkSession) {
-      setCycles(cycles + 1);
-      if (cycles > 0 && cycles % 4 === 0) {
+      if (cycles > 0 && (cycles + 1) % 4 === 0) {
         setSession("Long Break!");
         setminutes(defaultSettings.long);
       } else {
         setSession("Short Break!");
         setminutes(defaultSettings.short);
       }
+      setCycles(cycles + 1);
     } else {
       setSession("Work!");
       setminutes(defaultSettings.work);
@@ -128,6 +122,7 @@ const App = () => {
                 setIsActive(false);
                 setIsWorkSession(true);
                 setSession("Time to Focus!");
+                setCycles(0);
               }}
               variant="destructive"
               type="button">
