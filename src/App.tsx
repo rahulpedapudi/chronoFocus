@@ -14,6 +14,8 @@ import Activity from "./components/Activity";
 import { ThemeProvider } from "./components/theme-provider";
 import ModeToggle from "./components/modetoggle";
 import { Settings } from "lucide-react";
+import TodoList from "./components/TodoList";
+import { SheetDemo } from "./components/TodoListSheet";
 
 const App = () => {
   const [defaultSettings, setDefaultSettings] = useState({
@@ -75,12 +77,22 @@ const App = () => {
 
   const handleSave = () => {
     setIsActive(false);
-    toast({
-      description: "Settings saved Successfully.",
-    });
-    setminutes(userSettings.work);
-    setDefaultSettings(userSettings);
-    setSeconds(0);
+    if (
+      userSettings.work > 0 &&
+      userSettings.long > 0 &&
+      userSettings.short > 0
+    ) {
+      setminutes(userSettings.work);
+      setDefaultSettings(userSettings);
+      setSeconds(0);
+      toast({
+        description: "Settings saved Successfully.",
+      });
+    } else {
+      toast({
+        description: "Duration cant be negative!",
+      });
+    }
   };
 
   return (
@@ -136,8 +148,8 @@ const App = () => {
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="ghost">
-                  <Settings className="mt-[1.6px] mr-2 h-4 w-4" />{" "}
-                  <p className=" text-[16px]">Configure</p>
+                  <Settings className="mt-[1.6px] mr-2 h-4 w-4" />
+                  <p className="text-[16px]">Configure</p>
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-80">
@@ -160,6 +172,7 @@ const App = () => {
                           }));
                         }}
                         id="work"
+                        type="number"
                         defaultValue={defaultSettings.work}
                         className="col-span-2 h-8"
                       />
@@ -175,6 +188,7 @@ const App = () => {
                           }));
                         }}
                         id="s_break"
+                        type="number"
                         defaultValue={defaultSettings.short}
                         className="col-span-2 h-8"
                       />
@@ -190,6 +204,7 @@ const App = () => {
                           }));
                         }}
                         id="l_break"
+                        type="number"
                         defaultValue={defaultSettings.long}
                         className="col-span-2 h-8"
                       />
@@ -236,6 +251,8 @@ const App = () => {
               <Activity sessions={cycles} />
             </div>
           ) : null}
+          {/* <TodoList /> */}
+          <SheetDemo />
         </main>
       </ThemeProvider>
     </>
