@@ -14,7 +14,7 @@ import Activity from "./components/Activity";
 import { ThemeProvider } from "./components/theme-provider";
 import ModeToggle from "./components/modetoggle";
 import { Settings } from "lucide-react";
-import TodoList from "./components/TodoList";
+// import TodoList from "./components/TodoList";
 import { SheetDemo } from "./components/TodoListSheet";
 
 const App = () => {
