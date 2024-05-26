@@ -15,7 +15,7 @@ import { ThemeProvider } from "./components/theme-provider";
 import ModeToggle from "./components/modetoggle";
 import { Settings } from "lucide-react";
 // import TodoList from "./components/TodoList";
-import { SheetDemo } from "./components/TodoListSheet";
+// import { SheetDemo } from "./components/TodoListSheet";
 
 const App = () => {
   const [defaultSettings, setDefaultSettings] = useState({
@@ -252,7 +252,7 @@ const App = () => {
             </div>
           ) : null}
           {/* <TodoList /> */}
-          <SheetDemo />
+          {/* <SheetDemo /> */}
         </main>
       </ThemeProvider>
     </>
