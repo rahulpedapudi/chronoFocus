@@ -88,6 +88,14 @@ const App = () => {
       toast({
         description: "Settings saved Successfully.",
       });
+    } else if (
+      userSettings.work === 0 &&
+      userSettings.long === 0 &&
+      userSettings.short === 0
+    ) {
+      toast({
+        description: "Duration cant be zero!",
+      });
     } else {
       toast({
         description: "Duration cant be negative!",
