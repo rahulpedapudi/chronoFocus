@@ -89,8 +89,8 @@ const App = () => {
         description: "Settings saved Successfully.",
       });
     } else if (
-      userSettings.work === 0 &&
-      userSettings.long === 0 &&
+      userSettings.work === 0 ||
+      userSettings.long === 0 ||
       userSettings.short === 0
     ) {
       toast({
